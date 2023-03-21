@@ -1,4 +1,4 @@
-import {PostResponseType} from "../types";
+import {PostResponseType} from "../types/types";
 
 
 export const postModels = (posts: PostResponseType| PostResponseType[]): PostResponseType| PostResponseType[] => {

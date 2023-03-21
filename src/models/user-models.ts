@@ -1,4 +1,4 @@
-import {UserResponseFromDBType, UserResponseType} from "../types";
+import {UserResponseFromDBType, UserResponseType} from "../types/types";
 
 export const userModels = (users: UserResponseFromDBType[]): UserResponseType | UserResponseType[] => {
     const postConverter = (user: UserResponseFromDBType) => {

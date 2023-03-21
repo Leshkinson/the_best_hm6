@@ -2,7 +2,7 @@ import request from 'supertest'
 import {app} from "../setting";
 import {HTTP_STATUSES} from "../src/http_statuses";
 import {blogRepository} from "../src/repositories/blog-repository";
-import {DefaultValueListType} from "../src/types";
+import {DefaultValueListType} from "../src/types/types";
 import {blogService} from "../src/services/blog-service";
 import {blogModels} from "../src/models/blog-models";
 

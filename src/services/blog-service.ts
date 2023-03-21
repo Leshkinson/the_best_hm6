@@ -6,7 +6,7 @@ import {
     PostType,
     QueryForBlogsType,
     ResponseTypeWithPages
-} from "../types";
+} from "../types/types";
 import {Sort} from "mongodb";
 import {getSortSkipLimit} from "../utils/getSortSkipLimit";
 import {postRepository} from "../repositories/post-repository";

@@ -1,4 +1,4 @@
-import {QueryPageType} from "../types";
+import {QueryPageType} from "../types/types";
 import {Sort} from "mongodb";
 
 export const getSortSkipLimit = async (query: QueryPageType):Promise<(number | Sort)[]> => {

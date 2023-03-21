@@ -1,4 +1,4 @@
-import {DefaultValueListType} from "../types";
+import {DefaultValueListType} from "../types/types";
 import {ParsedQs} from "qs";
 
 export const getPageQuery = (query : ParsedQs, defaultValue : DefaultValueListType) => {

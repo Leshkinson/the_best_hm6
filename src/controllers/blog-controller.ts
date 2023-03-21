@@ -1,6 +1,6 @@
 import {blogService} from "../services/blog-service";
 import {Request, Response} from "express";
-import {DefaultValueListType} from "../types";
+import {DefaultValueListType} from "../types/types";
 import {HTTP_STATUSES} from "../http_statuses";
 import {getPageQuery} from "../utils/getPageQuery";
 

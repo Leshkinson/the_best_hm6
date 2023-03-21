@@ -1,6 +1,6 @@
 import {MongoClient} from "mongodb";
 import dotenv from 'dotenv'
-import {BlogResponseType, PostResponseType, UserResponseFromDBType, UserType} from "./src/types";
+import {BlogResponseType, PostResponseType, UserResponseFromDBType, UserType} from "./src/types/types";
 
 dotenv.config()
 
@@ -10,7 +10,7 @@ const myDB = process.env.npm_lifecycle_event !== "jest"  ?  client.db("myDB") : 
 export const postCollections = myDB.collection<PostResponseType>("posts")
 export const blogCollections = myDB.collection<BlogResponseType>("blogs")
 export const userCollections = myDB.collection<UserResponseFromDBType>("users")
-
+export const commentCollections = myDB.collection<any>("comments")
 export async function runDB() {
     try {
         await client.connect()

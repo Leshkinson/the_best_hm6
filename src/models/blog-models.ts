@@ -1,4 +1,4 @@
-import {BlogResponseType} from "../types";
+import {BlogResponseType} from "../types/types";
 
 
 export const blogModels = (blogs: BlogResponseType | BlogResponseType[]): BlogResponseType | BlogResponseType[] => {

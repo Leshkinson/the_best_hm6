@@ -2,7 +2,7 @@ import {app} from "../setting";
 import {HTTP_STATUSES} from "../src/http_statuses";
 import request from 'supertest'
 import {postService} from "../src/services/post-service";
-import {DefaultValueListType} from "../src/types";
+import {DefaultValueListType} from "../src/types/types";
 import {blogService} from "../src/services/blog-service";
 
 const testNewPost = {

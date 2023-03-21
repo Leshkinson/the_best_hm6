@@ -1,4 +1,4 @@
-import {PostResponseType} from "../types";
+import {PostResponseType} from "../types/types";
 import {postCollections} from "../../mongoDB";
 import {Sort} from "mongodb";
 

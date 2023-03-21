@@ -51,6 +51,23 @@ export type AuthType = {
     password: string
 }
 
+export type CommentType = {
+    content: string
+}
+export type CommentResponseType = CommentType & {
+    id: string
+    commentatorInfo: {
+        userId: string
+        userLogin: string
+    },
+    createdAt: string
+}
+
+export type CommentResponseFromDBType = CommentResponseType &{
+    postId: string
+}
+
+
 export type QueryForBlogsType = QueryPageType & {
     name: string
 }

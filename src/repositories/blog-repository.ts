@@ -1,4 +1,4 @@
-import {BlogResponseType} from "../types";
+import {BlogResponseType} from "../types/types";
 import {blogCollections} from "../../mongoDB";
 import {Sort} from "mongodb";
 
@@ -8,8 +8,8 @@ export const blogRepository = {
         return await blogCollections.find(filter).sort(sort).skip(skip).limit(limit).toArray()
     },
 
-    async getBlogById(id: { id: string }): Promise<BlogResponseType | null> {
-        return blogCollections.findOne(id)
+    async getBlogById(filter: { id: string }): Promise<BlogResponseType | null> {
+        return blogCollections.findOne(filter)
     },
 
     async getTotalCount(filter: any):Promise<number> {
@@ -20,8 +20,8 @@ export const blogRepository = {
         await blogCollections.insertOne(newBlog)
     },
 
-    async changeBlog(id: { id: string }, updateBLog: { $set: BlogResponseType }): Promise<boolean> {
-        const result = await blogCollections.updateOne(id, updateBLog)
+    async changeBlog(filter: { id: string }, updateBLog: { $set: BlogResponseType }): Promise<boolean> {
+        const result = await blogCollections.updateOne(filter, updateBLog)
         return result.matchedCount === 1;
 
     },

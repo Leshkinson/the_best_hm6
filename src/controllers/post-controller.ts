@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import {postService} from "../services/post-service";
 import {HTTP_STATUSES} from "../http_statuses";
-import {DefaultValueListType} from "../types";
+import {DefaultValueListType} from "../types/types";
 import {getPageQuery} from "../utils/getPageQuery";
 
 const DEFAULT_VALUE_LIST: DefaultValueListType = {
@@ -32,9 +32,22 @@ export const postController = {
         }
     },
 
+    async getPostComments(req: Request, res: Response){
+       const query = {
+           ...getPageQuery(req.query, DEFAULT_VALUE_LIST),
+       }
+       const postComments = await postService.getPostComments(req.params.id, query)
+        res.status(HTTP_STATUSES.OK200).send(postComments)
+    },
+
     async createPost(req: Request, res: Response){
         const newPost = await postService.createPost(req.body)
         res.status(HTTP_STATUSES.CREATED_201).send(newPost)
+    },
+
+    async createdComment(req: Request, res: Response){
+       const newComment = await postService.createdComment(req.params.id ,req.body)
+        res.status(HTTP_STATUSES.CREATED_201).send(newComment)
     },
 
     async  changePost(req: Request, res: Response){

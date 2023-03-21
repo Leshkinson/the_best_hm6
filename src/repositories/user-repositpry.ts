@@ -1,5 +1,5 @@
 import {userCollections} from "../../mongoDB";
-import {UserResponseFromDBType} from "../types";
+import {UserResponseFromDBType} from "../types/types";
 
 
 export const userRepository = {

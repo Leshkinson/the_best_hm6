@@ -4,7 +4,7 @@ import {
     UserRequestType,
     UserResponseFromDBType,
     UserResponseType
-} from "../types";
+} from "../types/types";
 import {getSortSkipLimit} from "../utils/getSortSkipLimit";
 import {userRepository} from "../repositories/user-repositpry";
 import {createId} from "../utils/createId";

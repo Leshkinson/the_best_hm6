@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {DefaultValueListType} from "../types";
+import {DefaultValueListType} from "../types/types";
 import {HTTP_STATUSES} from "../http_statuses";
 import {userService} from "../services/user-service";
 import {getPageQuery} from "../utils/getPageQuery";
