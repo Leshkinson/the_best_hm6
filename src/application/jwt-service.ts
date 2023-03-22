@@ -6,7 +6,7 @@ export const jwtService = {
 
     async createJWT(user: any){
         const token = jwt.sign({userId: user.id}, jtwSecret, {expiresIn: '1h'}) //expiresIn вребя работы токена
-        return {accessToken : `Bearer ${token}`}
+        return {accessToken : token}
 
     },
 

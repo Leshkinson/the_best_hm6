@@ -1,5 +1,6 @@
 import {BlogResponseType, CommentResponseType, CommentType} from "../types/types";
 import {commentRepository} from "../repositories/comment-repository";
+import {commentModels} from "../models/comment-models";
 
 
 export const commentService = {
@@ -8,7 +9,7 @@ export const commentService = {
         const filter = {id}
         const comment = await commentRepository.getCommentById(filter)
         if (comment) {
-            return comment
+            return commentModels(comment) as CommentResponseType
         }
         return null
     },
