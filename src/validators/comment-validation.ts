@@ -1,6 +1,6 @@
 import {body} from "express-validator";
 
-const contentValidation = body('comment')
+const contentValidation = body('content')
     .isString().withMessage('Invalid type')
     .trim()
     .isLength({min: 20, max: 300}).withMessage('Not correct length')

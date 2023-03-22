@@ -16,7 +16,7 @@ postsRouter.get('/:id', postController.getPostById)
 postsRouter.get('/:id/comments', authMiddleware, postController.getPostComments)
 //-------------------POST---------------//
 postsRouter.post('/', authorizationGuard, postValidations, inputValidationMiddleware, postController.createPost)
-postsRouter.post('/:id/comments', checkPostId, commentValidation, postController.createdComment)
+postsRouter.post('/:id/comments', checkPostId, commentValidation, inputValidationMiddleware, postController.createdComment)
 //-------------------PUT---------------//
 postsRouter.put('/:id', authorizationGuard, checkPostId, postValidations, inputValidationMiddleware, postController.changePost)
 //-------------------DELETE---------------//
