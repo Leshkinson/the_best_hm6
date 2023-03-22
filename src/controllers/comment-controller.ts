@@ -29,7 +29,7 @@ export const commentController = {
     async deleteComment(req: Request, res: Response) {
           const isDeleted = await commentService.deleteComment(req.params.id)
         if (isDeleted) {
-            res.status(HTTP_STATUSES.NO_CONTENT_204)
+            res.sendStatus(HTTP_STATUSES.NO_CONTENT_204)
             return
         }
         res.sendStatus(HTTP_STATUSES.NOT_FOUND_404)
