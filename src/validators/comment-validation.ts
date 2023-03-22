@@ -10,14 +10,9 @@ const contentValidation = body('content')
     .notEmpty().withMessage('Field must not be empty')
 
 
-export const test = async (req: Request, res: Response, next: NextFunction) => {
-    const comment = await commentService.getCommentById(req.params.id)
-    console.log('comment', comment)
-    if (comment && req.content.user) {
-        req.content.user.id !== comment.commentatorInfo.userId && res.sendStatus(403)
-        return
-    }
-    next()
+export const checkIsUserOwnerComment = async (req: Request, res: Response, next: NextFunction) => {
+    //@ts-ignore
+    req.content.user.id !== req.content.comment.commentatorInfo.userId ? res.sendStatus(403) : next()
 }
 
 
