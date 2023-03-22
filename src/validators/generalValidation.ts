@@ -2,6 +2,7 @@ import {NextFunction, Request, Response} from "express";
 import {HTTP_STATUSES} from "../http_statuses";
 import {blogService} from "../services/blog-service";
 import {postService} from "../services/post-service";
+import {commentService} from "../services/comment-service";
 
 export const checkBlogId = async (req: Request, res: Response, next: NextFunction) => {
     const isHaveBlog = await blogService.getBlogById(req.params.id)
@@ -14,7 +15,6 @@ export const checkBlogId = async (req: Request, res: Response, next: NextFunctio
 
 export const checkPostId = async (req: Request, res: Response, next: NextFunction) => {
     const isHaveId = await postService.getPostById(req.params.id)
-        //   req.content = {postId: isHaveId.id} пример как расширить реквест
     isHaveId ? next() :  res.sendStatus(HTTP_STATUSES.NOT_FOUND_404)
 }
 
