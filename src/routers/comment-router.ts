@@ -13,5 +13,5 @@ commentRouter.get('/:id',  commentController.getCommentById)
 //-------------------PUT---------------//
 commentRouter.put('/:id', authMiddleware, checkCommentId, checkIsUserOwnerComment, commentValidation, inputValidationMiddleware, commentController.changeComment)
 //-------------------DELETE---------------//
-commentRouter.delete('/:id', authMiddleware, commentController.deleteComment)
+commentRouter.delete('/:id', authMiddleware, checkCommentId, checkIsUserOwnerComment, commentController.deleteComment)
 
