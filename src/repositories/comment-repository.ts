@@ -21,7 +21,7 @@ export const commentRepository = {
         await commentCollections.insertOne(newComment)
     },
 
-    async changeComment(filter: { id: string }, updateComment: { $set: CommentResponseType }) {
+    async changeComment(filter: { id: string }, updateComment: { $set: CommentResponseType }):Promise<boolean> {
         const result = await commentCollections.updateOne(filter, updateComment)
         return result.matchedCount === 1
     },

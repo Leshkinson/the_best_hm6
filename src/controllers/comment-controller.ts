@@ -17,8 +17,9 @@ export const commentController = {
 
     async changeComment(req: Request, res: Response) {
         const isChangeComment = await commentService.changeComment(req.params.id, req.body)
+
         if (isChangeComment) {
-            res.status(HTTP_STATUSES.NO_CONTENT_204)
+            res.sendStatus(HTTP_STATUSES.NO_CONTENT_204)
             return
         }
         res.sendStatus(HTTP_STATUSES.NOT_FOUND_404)
