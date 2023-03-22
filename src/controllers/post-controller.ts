@@ -46,7 +46,7 @@ export const postController = {
     },
 
     async createdComment(req: Request, res: Response){
-       const newComment = await postService.createdComment(req.params.id ,req.body)
+       const newComment = await postService.createdComment(req.params.id ,req.body, req.content.user)
         res.status(HTTP_STATUSES.CREATED_201).send(newComment)
     },
 

@@ -72,13 +72,13 @@ export const postService = {
         return postModels(newPost) as PostResponseType
     },
 
-    async createdComment(id: string, comment: CommentType) {
+    async createdComment(id: string, comment: CommentType, user: any) {
         const newComment = {
             id: createId(),
             content: comment.content,
             commentatorInfo: {
-                userId: "string",  // поменять
-                userLogin: "string" // поменять
+                userId: user.id,
+                userLogin: user.login
             },
             createdAt: new Date().toISOString()
         }
