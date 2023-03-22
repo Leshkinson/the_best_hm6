@@ -10,7 +10,7 @@ export const getFilter = (params: any, withRegex:boolean = false) => {
     if (arrKeys.length > 1) {
         filter.$or = arrKeys.map((key) => {
           if(withRegex)  return {[key]: {$regex: new RegExp(`${validParams[key]}`, 'i')}}
-          return {key: validParams[key]}
+          return {[key]: validParams[key]}
         })
     }
     if(arrKeys.length === 1) {

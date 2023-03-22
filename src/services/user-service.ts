@@ -14,8 +14,6 @@ import {Sort} from "mongodb";
 import {getFilter} from "../utils/getFilter";
 
 
-
-
 export const userService = {
 
     async getAllUsers(query: QueryForUsersType): Promise<ResponseTypeWithPages<UserResponseType>> {
@@ -31,6 +29,11 @@ export const userService = {
             totalCount,
             items: userModels(users) as UserResponseType[]
         }
+    },
+
+    async getUserById(id: string): Promise<UserResponseFromDBType | null> {
+        const filter = {id}
+        return await userRepository.getUserById(filter)
     },
 
     async getUserByLoginOrEmail(loginOrEmail: string): Promise<UserResponseFromDBType | null> {

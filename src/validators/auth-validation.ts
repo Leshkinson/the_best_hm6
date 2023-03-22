@@ -14,6 +14,9 @@ export const checkIsValidUser = async (req: Request, res: Response, next: NextFu
         res.sendStatus(401)
         return
     }
+    req.content = {
+        user
+    }
     next()
 }
 const loginOrEmailValidation = body('loginOrEmail')

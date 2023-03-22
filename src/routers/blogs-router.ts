@@ -5,11 +5,12 @@ import {authorizationGuard} from "../middleware/authorization-guard";
 import {blogController} from "../controllers/blog-controller";
 import {createPostByBlogValidations} from "../validators/post-validation";
 import {blogValidations} from "../validators/blog-validation";
+import {authMiddleware} from "../middleware/authMiddleware";
 
 export const blogsRouter = Router({})
 
 //-------------------GET---------------//
-blogsRouter.get('/', blogController.getAllBlogs)
+blogsRouter.get('/', authMiddleware, blogController.getAllBlogs)
 blogsRouter.get('/:id', blogController.getBlogById)
 blogsRouter.get('/:id/posts',checkBlogId ,blogController.getAllBlogPosts)
 //-------------------POST---------------//

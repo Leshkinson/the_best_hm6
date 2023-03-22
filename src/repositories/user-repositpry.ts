@@ -8,7 +8,11 @@ export const userRepository = {
         return await userCollections.find(filter).sort(sort).skip(skip).limit(limit).toArray()
     },
 
-    async getUserByLoginOrEmail(filter:any): Promise<UserResponseFromDBType|null>{
+    async getUserById(filter: { id: string }): Promise<UserResponseFromDBType | null> {
+        return await userCollections.findOne(filter)
+    },
+
+    async getUserByLoginOrEmail(filter: any): Promise<UserResponseFromDBType | null> {
         return await userCollections.findOne(filter)
     },
 
@@ -20,12 +24,12 @@ export const userRepository = {
         await userCollections.insertOne(newUser)
     },
 
-    async deleteUser(filter: any):Promise<boolean>{
+    async deleteUser(filter: any): Promise<boolean> {
         const result = await userCollections.deleteOne(filter)
         return result.deletedCount === 1
     },
 
-    async deleteAllUser():Promise<void>{
+    async deleteAllUser(): Promise<void> {
         await userCollections.deleteMany({})
     }
 }
