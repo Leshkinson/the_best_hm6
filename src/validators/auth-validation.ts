@@ -2,19 +2,21 @@ import {body} from "express-validator";
 import {NextFunction, Request, Response} from "express";
 import {userService} from "../services/user-service";
 import bcrypt from "bcrypt";
+import {HTTP_STATUSES} from "../http_statuses";
 
 export const checkIsValidUser = async (req: Request, res: Response, next: NextFunction) => {
     const user = await userService.getUserByLoginOrEmail(req.body.loginOrEmail)
     if (!user) {
-        res.sendStatus(401)
+        res.sendStatus(HTTP_STATUSES.UNAUTHORIZED_401)
         return
     }
     const hash = await bcrypt.hash(req.body.password, user.salt)
     if (hash !== user.hash) {
-        res.sendStatus(401)
+        res.sendStatus(HTTP_STATUSES.UNAUTHORIZED_401)
         return
     }
     req.content = {
+        ...req.content,
         user
     }
     next()

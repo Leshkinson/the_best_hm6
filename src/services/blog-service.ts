@@ -17,9 +17,9 @@ import {createId} from "../utils/createId";
 
 export const blogService = {
 
-    async getBlogs(query: QueryForBlogsType):Promise<ResponseTypeWithPages<BlogResponseType>> {
+    async getBlogs(query: QueryForBlogsType): Promise<ResponseTypeWithPages<BlogResponseType>> {
         const {pageNumber, pageSize, name} = query
-        const filter: any =  getFilter({name}, true)
+        const filter: any = getFilter({name}, true)
         const totalCount = await blogRepository.getTotalCount(filter)
         const [sort, skip, limit] = await getSortSkipLimit(query)
         const blogs = await blogRepository.getAllBlogs(filter, sort as Sort, +skip, +limit)
@@ -41,7 +41,7 @@ export const blogService = {
         return null
     },
 
-    async getAllBlogPosts(id: string, query: QueryForBlogsType):Promise<ResponseTypeWithPages<PostResponseType>> {
+    async getAllBlogPosts(id: string, query: QueryForBlogsType): Promise<ResponseTypeWithPages<PostResponseType>> {
         const {pageNumber, pageSize} = query
         const [sort, skip, limit] = await getSortSkipLimit(query)
         const filter: any = {blogId: id}

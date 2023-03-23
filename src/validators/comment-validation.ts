@@ -1,6 +1,6 @@
 import {body} from "express-validator";
 import {NextFunction, Request, Response} from "express";
-import {commentService} from "../services/comment-service";
+import {HTTP_STATUSES} from "../http_statuses";
 
 
 const contentValidation = body('content')
@@ -11,8 +11,13 @@ const contentValidation = body('content')
 
 
 export const checkIsUserOwnerComment = async (req: Request, res: Response, next: NextFunction) => {
+    //@ts-ignore // лень писать ебнутые проверки, я и так уже до вызова этой функции всё проверил
+    if(req.content.user.id !== req.content.comment.commentatorInfo.userId){
+        res.sendStatus(HTTP_STATUSES.FORBIDDEN_403)
+        return
+    }
     //@ts-ignore
-    req.content.user.id !== req.content.comment.commentatorInfo.userId ? res.sendStatus(403) : next()
+    next()
 }
 
 

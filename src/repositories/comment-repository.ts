@@ -17,7 +17,7 @@ export const commentRepository = {
         return commentCollections.countDocuments(filter)
     },
 
-    async createdComment(newComment: any){
+    async createdComment(newComment: CommentResponseFromDBType):Promise<void>{
         await commentCollections.insertOne(newComment)
     },
 
@@ -26,8 +26,12 @@ export const commentRepository = {
         return result.matchedCount === 1
     },
 
-    async deleteComment(filter: { id: string }) {
+    async deleteComment(filter: { id: string }):Promise<boolean> {
         const result = await commentCollections.deleteOne(filter)
         return result.deletedCount === 1
+    },
+
+    async deleteAllComment(){
+        await commentCollections.deleteMany({})
     }
 }

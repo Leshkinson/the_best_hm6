@@ -46,7 +46,7 @@ export const postService = {
         const filter: any = {postId}
         const [sort, skip, limit] = await getSortSkipLimit(query)
         const totalCount = await commentRepository.getTotalCount(filter)
-        const comments = await  commentRepository.getPostComments(filter, sort as Sort, +skip, +limit)
+        const comments = await commentRepository.getPostComments(filter, sort as Sort, +skip, +limit)
         return {
             pagesCount: Math.ceil(totalCount / +pageSize),
             page: pageNumber,
